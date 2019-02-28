@@ -1,3 +1,7 @@
-<p>
-  essos works!
-</p>
+<div class="container" *ngIf="essos">
+  <h1>{{essos.name | uppercase}}</h1>
+  <img src="https://blog.continentalcurrency.ca/wp-content/uploads/2017/07/essos-travel-922x652.jpg">
+  <div *ngFor="let name of arya_list">
+    {{name}}
+  </div>
+</div>

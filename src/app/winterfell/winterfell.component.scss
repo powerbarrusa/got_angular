@@ -1,10 +1,9 @@
-.image_container{
-    float: left;
-    width: 100px;
-    height: 100px;
-    border: 1px solid black;
-    img{
-        width: 80px;
-        height:80px;
-    }
+h1 {
+  text-align: center;
+}
+
+.winterfell {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
 }

@@ -1,15 +1,23 @@
-
- 
-  <div *ngIf="zone">
-      <h1>{{zone.name}}</h1>
-             
-      <div class="image_container" *ngFor="let image of zone.images">
-          {{image.id}} | 
-          <img src={{image.url}} >
-          {{image.created_at}} 
-      </div>
-  </div>
-  
-
-
- 
+<div class="container" *ngIf="zone">
+    <h1>{{zone.name | uppercase}}</h1>
+    <div class="winterfell">
+        <div class="image_container" *ngFor="let image of zone.images"> 
+            <img (click)="clickPhoto()" src={{image.url}} >
+        </div>
+    </div>
+    <div class="card winterfell" style="width: 18rem;">
+        <div class="card-header">
+            Add a victim:
+        </div>
+        <ul class="list-group list-group-flush">
+            <input (input)="seeName($event)" />
+            <button (click)="addName()">Click me to add!</button>
+            Here is the ongoing list:
+            <li *ngFor="let name of arya_list" class="list-group-item">{{name}}</li>
+        </ul>
+    </div>
+    <div *ngIf="zone">
+        <button (click)="removeName()">Change of heart?</button>
+        <input (input)="nameToRemove($event)" />
+    </div>
+</div>

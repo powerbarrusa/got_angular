@@ -1,6 +1,7 @@
 import { Component, OnInit, Optional } from '@angular/core';
 import {RegionsService} from '../regions.service';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from '../message.service'
 
 
 @Component({
@@ -9,24 +10,44 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./winterfell.component.scss']
 })
 export class WinterfellComponent implements OnInit {
-  where_i_am:any;
-
   zone:Object;
-  money:number = 5.55;
+  arya_list:string[];
+  nametoadd:string;
+  toremove:string;
 
-  constructor(private regions:RegionsService, private route: ActivatedRoute) { }
-
+  constructor(private regions:RegionsService, private route: ActivatedRoute, private messy: MessageService) { }
   ngOnInit() {
-  this.where_i_am= this.route.snapshot.routeConfig.path;
-  console.log("where am I ? ", this.where_i_am);
-  
-  this.getStuff();
+  this.arya_list = this.messy.getList()
+  this.getStuff()
   }
 
   getStuff(){
     this.regions.getData().subscribe(payload=>{
       this.zone = payload;
     })
+  }
+
+  seeName(e){
+    this.nametoadd = e.target.value
+  }
+
+  addName(){
+    this.messy.arya_list.push(this.nametoadd)
+  }
+
+  removeName(){
+    return this.messy.arya_list = this.messy.arya_list.filter(element => {
+      return element !== this.toremove
+    })
+  }
+
+  nameToRemove(e){
+    this.toremove = e.target.value
+    console.log(this.toremove)
+  }
+
+  clickPhoto(){
+    console.log("clicked!")
   }
  
 

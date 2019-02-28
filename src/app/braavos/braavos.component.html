@@ -1,3 +1,7 @@
-<p>
-  braavos works!
-</p>
+<div class="container" *ngIf="braavos">
+  <h1>{{braavos.name | uppercase}}</h1>
+  <img src="https://uproxx.files.wordpress.com/2015/04/thrones-braavos.png?w=650">
+  <div *ngFor="let name of arya_list">
+    {{name}}
+  </div>
+</div>
