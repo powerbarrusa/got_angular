@@ -36,11 +36,13 @@ export class WinterfellComponent implements OnInit {
   }
 
   removeName(){
-    return this.messy.arya_list = this.messy.arya_list.filter(element => {
-      return element !== this.toremove
-    })
+    let newArray = this.messy.arya_list.filter(element => element !== this.toremove)
+    var index = this.messy.arya_list.indexOf(this.toremove)
+    this.messy.arya_list.splice(index, 1)
+    console.log(newArray)
+    console.log(this.messy.arya_list)
   }
-
+  
   nameToRemove(e){
     this.toremove = e.target.value
     console.log(this.toremove)
@@ -49,6 +51,4 @@ export class WinterfellComponent implements OnInit {
   clickPhoto(){
     console.log("clicked!")
   }
- 
-
 }
